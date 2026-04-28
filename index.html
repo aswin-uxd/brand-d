@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Digital Marketing Agency</title>
+    <title>Digital Marketing Agency | Revenue-Driven Results</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,23 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* WebFX specific UI additions for Trust & Mid-CTA */
+        .trust-metrics { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; font-weight: 700; font-size: 18px; color: var(--text-primary); }
+        .trust-metrics span { color: var(--accent); }
+        .mid-cta { background: var(--text-primary); color: #FFF; text-align: center; padding: 64px 24px; border-radius: 12px; margin: 64px auto; max-width: 900px; }
+        .mid-cta h2 { color: #FFF; margin-bottom: 16px; font-size: 32px; }
+        .mid-cta p { color: #A1A1AA; margin-bottom: 32px; font-size: 18px; }
+        .why-choose-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+        .why-card { border: 1px solid var(--border); padding: 32px; border-radius: 8px; text-align: left; }
+        .case-study-details { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 24px; }
+        .cs-phase { margin-bottom: 16px; }
+        .cs-phase strong { display: block; color: var(--text-primary); margin-bottom: 4px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+        @media(max-width: 768px) {
+            .trust-metrics { flex-direction: column; gap: 16px; }
+            .why-choose-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -22,231 +39,287 @@
     <div class="preloader-logo"></div>
 </div>
 
-<div class="noise-overlay"></div>
+<nav class="hero-navbar">
+    <div class="container">
+        <a href="#" class="logo"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY.</a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#results">Results</a>
+            <a href="#why">Why Us</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="btn btn-primary">Get a Proposal</a>
+    </div>
+</nav>
 
 <main class="app-container">
-    <!-- SECTION 1: HERO (100vh) -->
-    <section class="section-hero" id="hero">
-        <!-- SEO-Friendly Navbar -->
-        <nav class="hero-navbar">
-            <div class="logo"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY<span>.</span></div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#work">Work</a>
-                <a href="#process">Process</a>
-            </div>
-            <button class="btn btn-primary btn-small">Get Started</button>
-        </nav>
-
-        <div class="hero-background">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-gradient-overlay"></div>
+    <!-- SECTION 1: HERO (RESULT-FIRST) -->
+    <section class="section section-hero" id="home" style="height: 100vh; width: 100vw; padding: 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <div class="hero-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: #000;">
+            <canvas id="hero-canvas" style="width: 100%; height: 100%; opacity: 0.6; display: block;"></canvas>
         </div>
-        
-        <div class="hero-content container">
-            <h1 class="hero-title">Elevate Your<br>Brand Story.</h1>
-            <p class="hero-subtext">Cinematic experiences that drive conversion and growth. We build high-performance, SEO-optimized digital platforms.</p>
-            <div class="hero-ctas">
-                <button class="btn btn-primary">Start a Project</button>
-                <button class="btn btn-secondary">Our Work</button>
+        <div class="content-container" style="position: relative; z-index: 2; text-align: center;">
+            <div class="hero-content">
+                <h1 style="font-weight: 800; letter-spacing: -0.03em; color: #FFF;">Drive Revenue, Not Just Traffic.</h1>
+                <p class="body-large" style="max-width: 600px; margin: 0 auto 32px; color: #E4E4E7;">We are the digital marketing agency that has generated over <strong style="color:#FFF;">$3 Billion</strong> in revenue for our clients. Get a custom, data-driven strategy to scale your leads and sales.</p>
+                <div class="hero-ctas" style="display: flex; gap: 16px; justify-content: center;">
+                    <a href="#contact" class="btn btn-primary" style="background: var(--accent); font-size: 18px; padding: 0 32px; color: #FFF; border: none;">Get My Free Proposal</a>
+                    <a href="#results" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.3); color: #FFF;">See Our Results</a>
+                </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll</span>
         </div>
     </section>
 
-    <!-- Content Sections Wrapper -->
-    <div class="sections-wrapper">
-        <!-- SECTION 2: SERVICES (100vh) -->
-        <section class="section-services snap-section" id="services">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2>Our Expertise</h2>
-                    <p>Comprehensive digital solutions for modern brands.</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon brand-gradient"></div>
-                        <h3>Brand Strategy</h3>
-                        <p>Defining your unique voice and positioning in the market.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon uiux-gradient"></div>
-                        <h3>UX/UI Design</h3>
-                        <p>Crafting intuitive and immersive digital experiences.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon motion-gradient"></div>
-                        <h3>Motion & 3D</h3>
-                        <p>Bringing your brand to life with cinematic motion.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon performance-gradient"></div>
-                        <h3>Performance Growth</h3>
-                        <p>Data-driven marketing to scale your audience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: PROCESS (100vh) -->
-        <section class="section-process snap-section" id="process">
-            <div class="container">
-                <div class="section-header">
-                    <h2>How We Work</h2>
-                </div>
-                <div class="process-steps">
-                    <div class="process-track"></div>
-                    <div class="step">
-                        <div class="step-num">01</div>
-                        <h3>Discovery</h3>
-                        <p>Deep dive into your brand, audience, and objectives.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">02</div>
-                        <h3>Strategy</h3>
-                        <p>Formulating a blueprint for long-term digital growth.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">03</div>
-                        <h3>Execution</h3>
-                        <p>Flawless design and development of your digital assets.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-num">04</div>
-                        <h3>Optimization</h3>
-                        <p>Continuous refinement based on real-world data.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: CASE STUDY (100vh) -->
-        <section class="section-casestudy snap-section" id="work">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Featured Work</h2>
-                    <div class="filter-bar">
-                        <select class="filter-dropdown">
-                            <option>All Categories</option>
-                            <option>Web3</option>
-                            <option>SaaS</option>
-                            <option>E-commerce</option>
-                        </select>
-                        <div class="filter-tags">
-                            <span class="filter-tag active">All</span>
-                            <span class="filter-tag">Strategy</span>
-                            <span class="filter-tag">Design</span>
-                            <span class="filter-tag">Development</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="split-layout">
-                    <div class="split-left">
-                        <div class="mockup-container">
-                            <img src="case-study-mockup.webp" alt="Project Mockup" class="mockup-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 600\'%3E%3Crect width=\'800\' height=\'600\' fill=\'%23e2e8f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%2364748b\'%3ECase Study Image Placeholder%3C/text%3E%3C/svg%3E'">
-                        </div>
-                    </div>
-                    <div class="split-right">
-                        <h2 class="project-title">Aura Finance</h2>
-                        <p class="project-desc">A complete brand evolution and Web3 platform redesign focusing on trust and high conversion.</p>
-                        <div class="metrics-grid">
-                            <div class="metric">
-                                <h4>+200%</h4>
-                                <span>User Growth</span>
-                            </div>
-                            <div class="metric">
-                                <h4>3x</h4>
-                                <span>Conversion Rate</span>
-                            </div>
-                        </div>
-                        <div class="carousel-nav">
-                            <button class="nav-btn prev">←</button>
-                            <span>Next Project</span>
-                            <button class="nav-btn next">→</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: STATS (100vh) -->
-        <section class="section-stats snap-section" id="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h2 class="stat-number" data-target="200">0+</h2>
-                        <p class="stat-label">Projects Delivered</p>
-                    </div>
-                    <div class="stat-item">
-                        <h2 class="stat-number" data-target="95">0%</h2>
-                        <p class="stat-label">Client Retention</p>
-                    </div>
-                    <div class="stat-item">
-                        <h2 class="stat-number" data-target="10">0M+</h2>
-                        <p class="stat-label">Revenue Generated</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 6: TESTIMONIAL (100vh) -->
-        <section class="section-testimonial snap-section" id="testimonials">
-            <div class="container center-content">
-                <div class="testimonial-card glass-panel">
-                    <div class="client-avatar">
-                        <img src="client.webp" alt="Client" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23cbd5e1\'/%3E%3C/svg%3E'">
-                    </div>
-                    <blockquote class="quote">
-                        "They completely transformed our digital presence. The new website feels like a cinematic experience and conversions have tripled in just two months."
-                    </blockquote>
-                    <div class="client-info">
-                        <strong>Sarah Jenkins</strong>
-                        <span>CMO, TechNova</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: FINAL CTA (100vh) -->
-        <section class="section-cta snap-section" id="contact">
-            <div class="cta-background-glow"></div>
-            <div class="container center-content relative-z">
-                <h2 class="cta-headline">Ready to build something extraordinary?</h2>
-                <p class="cta-support">Let's craft your next digital breakthrough together.</p>
-                <button class="btn btn-primary btn-large glow-hover">Start the Conversation</button>
-            </div>
-        </section>
-
-        <!-- SECTION 8: FOOTER -->
-        <footer class="section-footer snap-section">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <div class="logo"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY<span>.</span></div>
-                    </div>
-                    <nav class="footer-nav">
-                        <a href="#services">Services</a>
-                        <a href="#work">Work</a>
-                        <a href="#process">Process</a>
-                        <a href="#contact">Contact</a>
-                    </nav>
-                    <div class="social-icons">
-                        <a href="#">TW</a>
-                        <a href="#">IN</a>
-                        <a href="#">IG</a>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 Agency. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+    <!-- SECTION 2: INSTANT TRUST BLOCK -->
+    <div class="trust-strip container">
+        <div class="trust-metrics">
+            <div>⭐⭐⭐⭐⭐ 500+ 5-Star Reviews</div>
+            <div><span>$3B+</span> Client Revenue Generated</div>
+            <div><span>7.8M+</span> Leads Generated</div>
+        </div>
+        <p style="margin-top: 32px;">Trusted by hyper-growth companies nationwide:</p>
+        <div class="client-logos">
+            <span>STRIPE</span>
+            <span>SHOPIFY</span>
+            <span>NEXUS</span>
+            <span>AURORA</span>
+            <span>LUMINA</span>
+        </div>
     </div>
+
+    <!-- SECTION 3: RESULTS SECTION (HIGH IMPACT) -->
+    <section class="section section-stats" id="results">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 48px;">
+                <h2>Unmatched Client Results</h2>
+                <p class="body-large">We track our success by one metric: your bottom line.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2 class="stat-number" data-target="3">0B+</h2>
+                    <p class="stat-label">Revenue Generated (5 Yrs)</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="stat-number" data-target="7">0.8M+</h2>
+                    <p class="stat-label">Qualified Leads</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="stat-number" data-target="5">0.2M+</h2>
+                    <p class="stat-label">Phone Calls Driven</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SERVICES (SOLUTION MAPPING) -->
+    <section class="section section-services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Revenue-Driving Services</h2>
+                <p class="body-large">Stop paying for vanity metrics. We deploy strategies engineered strictly for ROI.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>SEO & Content</h3>
+                    <p>Capture high-intent search traffic that converts directly into paying customers and qualified leads.</p>
+                    <a href="#contact" class="btn btn-secondary" style="margin-top: 16px; width: 100%;">Get SEO Pricing</a>
+                </div>
+                <div class="service-card">
+                    <h3>PPC & Paid Ads</h3>
+                    <p>Maximize your ROAS with hyper-targeted Google & Social campaigns that eliminate wasted spend.</p>
+                    <a href="#contact" class="btn btn-secondary" style="margin-top: 16px; width: 100%;">Get PPC Pricing</a>
+                </div>
+                <div class="service-card">
+                    <h3>CRO & Web Design</h3>
+                    <p>Turn clicks into clients with conversion-optimized landing pages and frictionless user experiences.</p>
+                    <a href="#contact" class="btn btn-secondary" style="margin-top: 16px; width: 100%;">Get CRO Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MID-PAGE CTA -->
+    <div class="container">
+        <div class="mid-cta glass-panel">
+            <h2>Ready to scale your business?</h2>
+            <p>Speak with an expert strategist and get a custom revenue roadmap.</p>
+            <a href="#contact" class="btn btn-primary" style="background: var(--accent); padding: 0 32px;">Send Me a Proposal</a>
+        </div>
+    </div>
+
+    <!-- SECTION 5: CASE STUDIES (PROOF ENGINE) -->
+    <section class="section section-casestudy" id="work">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proof in Performance</h2>
+                <p class="body-large">How we turn stalled growth into predictable revenue.</p>
+            </div>
+            <div class="split-layout">
+                <div class="split-left">
+                    <div class="mockup-container">
+                        <img src="case-study-mockup.webp" alt="Project Dashboard" class="mockup-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 600\'%3E%3Crect width=\'800\' height=\'600\' fill=\'%23f3f4f6\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%239ca3af\'%3ENational E-Commerce Brand%3C/text%3E%3C/svg%3E'">
+                    </div>
+                </div>
+                <div class="split-right">
+                    <h3>National E-Commerce Brand</h3>
+                    <div class="metrics-grid" style="margin-top: 0;">
+                        <div class="metric">
+                            <h4 style="color: var(--accent);">+150%</h4>
+                            <span>YoY Revenue</span>
+                        </div>
+                        <div class="metric">
+                            <h4 style="color: var(--accent);">-62%</h4>
+                            <span>Cost Per Lead</span>
+                        </div>
+                    </div>
+                    <div class="case-study-details">
+                        <div class="cs-phase">
+                            <strong>The Problem:</strong>
+                            <span>Ad spend was scaling, but ROAS was dropping. High cart abandonment.</span>
+                        </div>
+                        <div class="cs-phase">
+                            <strong>The Strategy:</strong>
+                            <span>Rebuilt the account structure, launched dynamic retargeting, and optimized the checkout UX.</span>
+                        </div>
+                        <div class="cs-phase">
+                            <strong>The Result:</strong>
+                            <span>A multi-million dollar increase in trackable revenue within 6 months.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: WHY CHOOSE US -->
+    <section class="section" id="why" style="background: #F9FAFB; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Brands Choose Us</h2>
+                <p class="body-large">We don't guess. We engineer growth using proprietary data and elite talent.</p>
+            </div>
+            <div class="why-choose-grid">
+                <div class="why-card bg-white">
+                    <h3 style="font-size: 20px;">Proprietary Technology</h3>
+                    <p class="small">Our custom AI tracking platform tracks every lead back to its exact marketing source, proving true ROI.</p>
+                </div>
+                <div class="why-card bg-white">
+                    <h3 style="font-size: 20px;">Data-Driven Decisions</h3>
+                    <p class="small">With over 5 million leads generated, we have the industry data to know exactly what works for your niche.</p>
+                </div>
+                <div class="why-card bg-white">
+                    <h3 style="font-size: 20px;">Dedicated Experts</h3>
+                    <p class="small">No junior account managers. You work directly with senior specialists dedicated to your growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: PROCESS -->
+    <section class="section section-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Proven Process</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-num">01. Audit</div>
+                    <h4 style="font-size: 18px;">Identify Leaks</h4>
+                    <p class="small">Deep dive into your analytics to find missed revenue opportunities.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">02. Strategy</div>
+                    <h4 style="font-size: 18px;">Build the Blueprint</h4>
+                    <p class="small">Map a custom funnel designed purely to lower CAC and raise LTV.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">03. Execution</div>
+                    <h4 style="font-size: 18px;">Deploy Systems</h4>
+                    <p class="small">Flawless launch of campaigns, SEO assets, and conversion UI.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">04. Optimize</div>
+                    <h4 style="font-size: 18px;">Scale Winners</h4>
+                    <p class="small">Relentless A/B testing and budget scaling on high-ROI channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: TESTIMONIALS -->
+    <section class="section section-testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <div class="client-avatar">
+                    <img src="client.webp" alt="Client" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23e5e7eb\'/%3E%3C/svg%3E'">
+                </div>
+                <blockquote class="quote">
+                    "They didn't just increase our traffic; they fixed our entire conversion funnel. Our revenue is up 200% since we brought them on. They are true revenue partners."
+                </blockquote>
+                <div class="client-info">
+                    <strong>Sydney Collins</strong>
+                    <span>CMO, National Tech Corp</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: LEAD CAPTURE (BOTTOM CTA) -->
+    <section class="section section-cta" id="contact" style="background: #0A0A0A; color: #FFF; border-top: none;">
+        <div class="container split-layout">
+            <div class="split-left">
+                <h2 style="color: #FFF;">Get Your Custom Revenue Strategy.</h2>
+                <p class="body-large" style="margin-bottom: 32px; color: #A1A1AA;">See exactly how much revenue you could be generating. Request your free proposal and our senior strategists will build a roadmap for your business.</p>
+                <ul style="list-style: none; padding: 0; color: #FFF; font-weight: 600;">
+                    <li style="margin-bottom: 12px;">✓ Custom Competitor Analysis</li>
+                    <li style="margin-bottom: 12px;">✓ SEO & Traffic Audit</li>
+                    <li style="margin-bottom: 12px;">✓ 6-Month Growth Blueprint</li>
+                </ul>
+            </div>
+            <div class="split-right">
+                <form class="contact-form" style="background: #FFF; color: #0A0A0A;">
+                    <h4 style="color: #0A0A0A;">Request Your Proposal</h4>
+                    <p class="small" style="margin-bottom: 24px;">Takes less than 60 seconds.</p>
+                    <div class="form-group">
+                        <input type="url" placeholder="Website URL" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Work Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>Primary Goal</option>
+                            <option value="leads">Generate More Leads</option>
+                            <option value="sales">Increase Online Sales</option>
+                            <option value="traffic">Drive Organic Traffic</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" style="background: var(--accent); font-size: 18px;">Send Me My Proposal</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="logo" style="color: var(--text-primary);"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY.</a>
+                <nav class="footer-nav">
+                    <a href="#services">Services</a>
+                    <a href="#results">Results</a>
+                    <a href="#why">Why Us</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p class="small">&copy; 2026 Digital Marketing Agency. Built for Revenue.</p>
+            </div>
+        </div>
+    </footer>
 </main>
 
 <script src="main.js"></script>

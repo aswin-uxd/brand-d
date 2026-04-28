@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ----------------------------------------------------
+// CORE BEHAVIORAL TRACKING & REVENUE INTELLIGENCE
+// ----------------------------------------------------
+
+model Session {
+  id             String    @id @default(cuid())
+  visitorId      String    @unique
+  userAgent      String?
+  geo            String?   // Used for server-side personalization
+  referralSource String?
+  campaign       String?
+  variants       String?   // Deterministic record of assigned A/B tests
+  events         Event[]
+  lead           Lead?
+  createdAt      DateTime  @default(now())
+}
+
+model Event {
+  id        String   @id @default(cuid())
+  sessionId String
+  session   Session  @relation(fields: [sessionId], references: [id])
+  eventType String   // 'scroll_100', 'cta_primary_click', 'form_start', 'form_abandon'
+  elementId String?
+  metadata  String?
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id             String    @id @default(cuid())
+  sessionId      String    @unique
+  session        Session   @relation(fields: [sessionId], references: [id])
+  email          String    @unique
+  company        String?
+  goal           String
+  status         String    @default("NEW") // NEW, QUALIFIED, NURTURE, CLOSED_WON
+  dealValue      Float?    // Captured when status -> CLOSED_WON
+  closedAt       DateTime?
+  sourcePage     String?
+  campaign       String?
+  referral       String?
+  behaviorScore  Int       @default(0)
+  scoreBreakdown String?   // e.g. {"industry": 20, "visited_pricing": 10}
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// ----------------------------------------------------
+// HUMAN-IN-THE-LOOP CONTROL & GROWTH LOOPS
+// ----------------------------------------------------
+
+model ScoringConfig {
+  id          String   @id @default(cuid())
+  metricKey   String   @unique // e.g., 'case_study_view'
+  weight      Int      // e.g., 15
+  description String
+}
+
+model BenchmarkConfig {
+  id        String @id @default(cuid())
+  metric    String @unique // e.g., 'form_completion_rate'
+  poorMax   Float
+  avgMax    Float
+  // Values above avgMax are considered "Strong"
+}
+
+model ActionLog {
+  id          String    @id @default(cuid())
+  title       String    // e.g., "Simplify Form Step 2"
+  description String    // The problem and suggested fix
+  priority    String    // HIGH, MEDIUM, LOW
+  status      String    @default("PENDING") // PENDING, APPLIED, COMPLETED
+  appliedAt   DateTime?
+  resultNote  String?
+  createdAt   DateTime  @default(now())
+}
+
+model ExperimentLog {
+  id           String    @id @default(cuid())
+  experimentId String
+  notes        String    // Hypothesis
+  durationDays Int
+  decision     String?   // "Promoted Variant B", "Reverted"
+  decidedBy    String
+  createdAt    DateTime  @default(now())
+}

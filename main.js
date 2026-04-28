@@ -1,186 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    initHeroCanvasAnimation();
-    initScrollAnimations();
-});
-
-window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-        setTimeout(() => {
-            preloader.style.opacity = "0";
-            preloader.style.visibility = "hidden";
-        }, 1200); // 1.2s delay to show the logo animation
-    }
-});
-
-function initHeroCanvasAnimation() {
-    const canvas = document.getElementById("hero-canvas");
-    const ctx = canvas.getContext("2d");
-    
-    // Set canvas dimensions
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-    window.addEventListener("resize", resize);
-    resize();
-    
-    const totalFrames = 240; 
-    const images = [];
-    
-    // Preload frames
-    for (let i = 1; i <= totalFrames; i++) {
-        const img = new Image();
-        const num = i.toString().padStart(3, '0');
-        img.src = `scrolldown/ezgif-frame-${num}.jpg`;
-        images.push(img);
-    }
-    
-    let currentFrame = 0;
-    let baseSpeed = 0.3; // Slow, smooth base speed
-    let speed = baseSpeed;
-    let scrollVelocity = 0;
-    let lastScrollY = window.scrollY;
-    
-    // Passive scroll listener for velocity
-    window.addEventListener("scroll", () => {
-        const currentScrollY = window.scrollY;
-        // Calculate scroll delta
-        const delta = currentScrollY - lastScrollY;
-        scrollVelocity = delta;
-        lastScrollY = currentScrollY;
-    }, { passive: true });
-    
-    function render() {
-        // Decay scroll velocity to ease back to base speed when scrolling stops
-        scrollVelocity *= 0.9;
-        
-        // Calculate speed using scroll delta
-        const factor = 0.08;
-        speed = baseSpeed + Math.abs(scrollVelocity) * factor;
-        
-        // Clamp to prevent excessive speed
-        speed = Math.min(speed, 6);
-        
-        // Seamless loop formula
-        currentFrame = (currentFrame + speed) % totalFrames;
-        
-        // Ensure we handle negative indices safely just in case
-        if (currentFrame < 0) currentFrame += totalFrames;
-        
-        const imgIndex = Math.floor(currentFrame);
-        const img = images[imgIndex];
-        
-        if (img && img.complete && img.naturalWidth > 0) {
-            // Calculate dimensions for object-cover
-            const canvasRatio = canvas.width / canvas.height;
-            const imgRatio = img.width / img.height;
-            
-            let drawWidth = canvas.width;
-            let drawHeight = canvas.height;
-            let offsetX = 0;
-            let offsetY = 0;
-            
-            if (canvasRatio > imgRatio) {
-                drawHeight = canvas.width / imgRatio;
-                offsetY = (canvas.height - drawHeight) / 2;
-            } else {
-                drawWidth = canvas.height * imgRatio;
-                offsetX = (canvas.width - drawWidth) / 2;
-            }
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-        }
-        
-        requestAnimationFrame(render);
-    }
-    
-    // Start animation loop
-    render();
-
-    // Hero Content slight upward motion (SEO friendly, no fade out)
-    gsap.to(".hero-content", {
-        scrollTrigger: {
-            trigger: ".section-hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        },
-        y: -40,
-        ease: "none"
-    });
-    
-    gsap.to(".hero-background", {
-        scrollTrigger: {
-            trigger: ".section-hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        },
-        scale: 1, // scales down from 1.05 to 1
-        ease: "none"
-    });
-}
-
-function initScrollAnimations() {
-    // Reveal headers
-    gsap.utils.toArray('.section-header').forEach(header => {
-        gsap.from(header, {
+    // Simple, clean reveal animations for minimal design
+    gsap.utils.toArray('.section-header, .service-card, .tool-card, .step, .split-layout, .stats-grid, .glass-panel, .testimonial-card').forEach(el => {
+        gsap.from(el, {
             scrollTrigger: {
-                trigger: header,
-                start: "top 80%",
-                toggleActions: "play none none reverse"
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none"
             },
-            y: 40,
+            y: 30,
             opacity: 0,
-            duration: 0.8,
-            ease: "power3.out"
+            duration: 0.6,
+            ease: "power2.out"
         });
-    });
-
-    // Reveal Service Cards
-    gsap.from(".service-card", {
-        scrollTrigger: {
-            trigger: ".services-grid",
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        },
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out"
-    });
-
-    // Reveal Process Steps
-    gsap.from(".step", {
-        scrollTrigger: {
-            trigger: ".process-steps",
-            start: "top 75%",
-            toggleActions: "play none none reverse"
-        },
-        x: -40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out"
-    });
-
-    // Parallax Mockup
-    gsap.from(".mockup-container", {
-        scrollTrigger: {
-            trigger: ".section-casestudy",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-        },
-        y: 100,
-        ease: "none"
     });
 
     // Stats counter animation
@@ -191,17 +24,116 @@ function initScrollAnimations() {
         gsap.from(stat, {
             scrollTrigger: {
                 trigger: stat,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
+                start: "top 90%",
+                toggleActions: "play none none none"
             },
             innerText: 0,
-            duration: 2,
+            duration: 1.5,
             snap: { innerText: 1 },
-            ease: "power3.out",
+            ease: "power2.out",
             onUpdate: function() {
-                // Ensure suffix is preserved
                 stat.innerText = Math.round(this.targets()[0].innerText) + suffix;
             }
         });
     });
+
+    // Chat Toggle Logic
+    const chatToggle = document.querySelector('.chat-toggle');
+    const chatPanel = document.querySelector('.chat-panel');
+    if(chatToggle && chatPanel) {
+        chatToggle.addEventListener('click', () => {
+            chatPanel.classList.toggle('active');
+        });
+    }
+
+    initHeroCanvasAnimation();
+});
+
+function initHeroCanvasAnimation() {
+    const canvas = document.getElementById("hero-canvas");
+    if (!canvas) return;
+    
+    const context = canvas.getContext("2d");
+    const frameCount = 240;
+    const currentFrame = index => `scrolldown/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+
+    const images = [];
+    let loadedImages = 0;
+    let playhead = 0;
+    let baseSpeed = 0.3; // Plays normally without interaction
+    let scrollSpeed = 0;
+    let targetScrollSpeed = 0;
+
+    // Resize canvas
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    // Preload all images
+    for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(i);
+        img.onload = () => {
+            loadedImages++;
+        };
+        images.push(img);
+    }
+
+    // Scroll Velocity Logic
+    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', () => {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        let delta = Math.abs(st - lastScrollTop);
+        targetScrollSpeed = delta * 0.15; // Accelerate based on scroll distance
+        lastScrollTop = st <= 0 ? 0 : st;
+    }, { passive: true });
+
+    function renderFrame(index) {
+        if (images[index] && images[index].complete) {
+            context.fillStyle = "#000000";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const img = images[index];
+            const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            const x = (canvas.width / 2) - (img.width / 2) * scale;
+            const y = (canvas.height / 2) - (img.height / 2) * scale;
+            
+            context.drawImage(img, x, y, img.width * scale, img.height * scale);
+        }
+    }
+
+    function loop() {
+        // Smoothly interpolate scroll speed back to 0
+        scrollSpeed += (targetScrollSpeed - scrollSpeed) * 0.1;
+        targetScrollSpeed *= 0.9; // Decay
+        
+        let currentSpeed = baseSpeed + scrollSpeed;
+        playhead += currentSpeed;
+        
+        if (playhead >= frameCount) {
+            playhead = 0;
+        }
+        
+        let frameIndex = Math.floor(playhead);
+        renderFrame(frameIndex);
+        
+        requestAnimationFrame(loop);
+    }
+    
+    // Start loop
+    requestAnimationFrame(loop);
 }
+
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = "0";
+            preloader.style.visibility = "hidden";
+            ScrollTrigger.refresh();
+        }, 800); 
+    }
+});
