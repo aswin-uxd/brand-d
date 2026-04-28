@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Dashboard</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">AGENCY<span>.</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-view="dashboard">
+                <span class="icon">⊞</span> Dashboard
+            </a>
+            <a href="#" class="nav-item" data-view="projects">
+                <span class="icon">📁</span> Projects
+            </a>
+            <a href="#" class="nav-item" data-view="stats">
+                <span class="icon">📊</span> Stats
+            </a>
+            <a href="#" class="nav-item" data-view="categories">
+                <span class="icon">🏷️</span> Categories
+            </a>
+            <a href="#" class="nav-item" data-view="settings">
+                <span class="icon">⚙️</span> Settings
+            </a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="top-bar-right">
+                <button class="btn btn-primary" id="btn-add-project">+ Add Project</button>
+                <div class="user-avatar">
+                    <img src="client.webp" alt="Admin" onerror="this.style.display='none'">
+                    <span>A</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT AREA -->
+        <div class="content-area">
+            
+            <!-- VIEW: DASHBOARD -->
+            <div class="view active" id="view-dashboard">
+                <h1 class="page-title">Dashboard</h1>
+                
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <span class="stat-title">Total Projects</span>
+                        <span class="stat-value">24</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-title">Featured Projects</span>
+                        <span class="stat-value">6</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-title">Total Views</span>
+                        <span class="stat-value">12.4k</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-title">Conversion</span>
+                        <span class="stat-value">4.2%</span>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Recent Projects</h2>
+                        <a href="#" class="text-link view-all-projects">View all</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="project-cell"><div class="thumb"></div> Aura Finance</div></td>
+                                <td>Web3</td>
+                                <td><span class="status-badge published">Published</span></td>
+                            </tr>
+                            <tr>
+                                <td><div class="project-cell"><div class="thumb"></div> Nexus SaaS</div></td>
+                                <td>SaaS</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIEW: PROJECTS -->
+            <div class="view" id="view-projects">
+                <div class="page-header">
+                    <h1 class="page-title">Projects</h1>
+                    <button class="btn btn-primary btn-add-project-link">+ Add Project</button>
+                </div>
+
+                <div class="filter-bar">
+                    <input type="text" class="input-field search-input" placeholder="Search projects...">
+                    <select class="input-field">
+                        <option>All Categories</option>
+                        <option>Web3</option>
+                        <option>SaaS</option>
+                    </select>
+                    <select class="input-field">
+                        <option>All Status</option>
+                        <option>Published</option>
+                        <option>Draft</option>
+                    </select>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                        <span class="toggle-label">Featured only</span>
+                    </label>
+                </div>
+
+                <div class="panel p-0">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Category</th>
+                                <th>Result</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="project-cell"><div class="thumb"></div> Aura Finance</div></td>
+                                <td>Web3</td>
+                                <td>+200% Growth</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon">✎</button>
+                                        <button class="btn-icon">⭐</button>
+                                        <button class="btn-icon text-danger">🗑</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="project-cell"><div class="thumb"></div> Nexus SaaS</div></td>
+                                <td>SaaS</td>
+                                <td>3x Conversion</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon">✎</button>
+                                        <button class="btn-icon">☆</button>
+                                        <button class="btn-icon text-danger">🗑</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIEW: ADD / EDIT PROJECT FORM -->
+            <div class="view" id="view-project-form">
+                <div class="page-header">
+                    <h1 class="page-title">Add New Project</h1>
+                    <button class="btn btn-secondary btn-back">← Back</button>
+                </div>
+
+                <form class="form-layout">
+                    <div class="form-left panel">
+                        <div class="form-group">
+                            <label>Project Title</label>
+                            <input type="text" class="input-field" placeholder="e.g. Aura Finance">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="input-field">
+                                <option>Web3</option>
+                                <option>SaaS</option>
+                                <option>E-commerce</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="input-field" rows="4" placeholder="Short description of the project..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Result Metric</label>
+                            <input type="text" class="input-field" placeholder="e.g. +200% Growth">
+                        </div>
+                    </div>
+                    
+                    <div class="form-right panel">
+                        <div class="form-group">
+                            <label>Cover Image</label>
+                            <div class="image-upload-box">
+                                <span>+ Upload Image</span>
+                                <input type="file" hidden>
+                            </div>
+                        </div>
+                        <div class="form-group inline-group">
+                            <label>Status</label>
+                            <select class="input-field">
+                                <option>Published</option>
+                                <option>Draft</option>
+                            </select>
+                        </div>
+                        <div class="form-group inline-group">
+                            <label>Featured</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-actions">
+                    <button class="btn btn-secondary btn-back">Cancel</button>
+                    <button class="btn btn-primary">Save Project</button>
+                </div>
+            </div>
+
+            <!-- VIEW: STATS -->
+            <div class="view" id="view-stats">
+                <h1 class="page-title">Homepage Stats</h1>
+                <p class="text-secondary mb-4">Edit the big numbers displayed on the frontend.</p>
+                
+                <div class="dashboard-grid">
+                    <div class="panel stat-edit-card">
+                        <label>Projects Delivered</label>
+                        <input type="text" class="input-field" value="200+">
+                        <button class="btn btn-primary btn-small mt-2">Save</button>
+                    </div>
+                    <div class="panel stat-edit-card">
+                        <label>Client Retention</label>
+                        <input type="text" class="input-field" value="95%">
+                        <button class="btn btn-primary btn-small mt-2">Save</button>
+                    </div>
+                    <div class="panel stat-edit-card">
+                        <label>Revenue Generated</label>
+                        <input type="text" class="input-field" value="10M+">
+                        <button class="btn btn-primary btn-small mt-2">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: CATEGORIES -->
+            <div class="view" id="view-categories">
+                <div class="page-header">
+                    <h1 class="page-title">Categories</h1>
+                </div>
+
+                <div class="panel">
+                    <div class="add-category-bar mb-4">
+                        <input type="text" class="input-field" placeholder="New Category Name">
+                        <button class="btn btn-primary">Add Category</button>
+                    </div>
+                    
+                    <ul class="category-list">
+                        <li class="category-item">
+                            <span>Web3 <span class="badge">12</span></span>
+                            <div class="actions">
+                                <button class="btn-icon">✎</button>
+                                <button class="btn-icon text-danger">🗑</button>
+                            </div>
+                        </li>
+                        <li class="category-item">
+                            <span>SaaS <span class="badge">8</span></span>
+                            <div class="actions">
+                                <button class="btn-icon">✎</button>
+                                <button class="btn-icon text-danger">🗑</button>
+                            </div>
+                        </li>
+                        <li class="category-item">
+                            <span>E-commerce <span class="badge">4</span></span>
+                            <div class="actions">
+                                <button class="btn-icon">✎</button>
+                                <button class="btn-icon text-danger">🗑</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

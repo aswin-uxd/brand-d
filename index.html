@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Digital Marketing Agency</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo/image.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<div id="preloader">
+    <div class="preloader-logo"></div>
+</div>
+
+<div class="noise-overlay"></div>
+
+<main class="app-container">
+    <!-- SECTION 1: HERO (100vh) -->
+    <section class="section-hero" id="hero">
+        <!-- SEO-Friendly Navbar -->
+        <nav class="hero-navbar">
+            <div class="logo"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY<span>.</span></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#work">Work</a>
+                <a href="#process">Process</a>
+            </div>
+            <button class="btn btn-primary btn-small">Get Started</button>
+        </nav>
+
+        <div class="hero-background">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        
+        <div class="hero-content container">
+            <h1 class="hero-title">Elevate Your<br>Brand Story.</h1>
+            <p class="hero-subtext">Cinematic experiences that drive conversion and growth. We build high-performance, SEO-optimized digital platforms.</p>
+            <div class="hero-ctas">
+                <button class="btn btn-primary">Start a Project</button>
+                <button class="btn btn-secondary">Our Work</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Content Sections Wrapper -->
+    <div class="sections-wrapper">
+        <!-- SECTION 2: SERVICES (100vh) -->
+        <section class="section-services snap-section" id="services">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Our Expertise</h2>
+                    <p>Comprehensive digital solutions for modern brands.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon brand-gradient"></div>
+                        <h3>Brand Strategy</h3>
+                        <p>Defining your unique voice and positioning in the market.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon uiux-gradient"></div>
+                        <h3>UX/UI Design</h3>
+                        <p>Crafting intuitive and immersive digital experiences.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon motion-gradient"></div>
+                        <h3>Motion & 3D</h3>
+                        <p>Bringing your brand to life with cinematic motion.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon performance-gradient"></div>
+                        <h3>Performance Growth</h3>
+                        <p>Data-driven marketing to scale your audience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROCESS (100vh) -->
+        <section class="section-process snap-section" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How We Work</h2>
+                </div>
+                <div class="process-steps">
+                    <div class="process-track"></div>
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <h3>Discovery</h3>
+                        <p>Deep dive into your brand, audience, and objectives.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <h3>Strategy</h3>
+                        <p>Formulating a blueprint for long-term digital growth.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <h3>Execution</h3>
+                        <p>Flawless design and development of your digital assets.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">04</div>
+                        <h3>Optimization</h3>
+                        <p>Continuous refinement based on real-world data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CASE STUDY (100vh) -->
+        <section class="section-casestudy snap-section" id="work">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Work</h2>
+                    <div class="filter-bar">
+                        <select class="filter-dropdown">
+                            <option>All Categories</option>
+                            <option>Web3</option>
+                            <option>SaaS</option>
+                            <option>E-commerce</option>
+                        </select>
+                        <div class="filter-tags">
+                            <span class="filter-tag active">All</span>
+                            <span class="filter-tag">Strategy</span>
+                            <span class="filter-tag">Design</span>
+                            <span class="filter-tag">Development</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-layout">
+                    <div class="split-left">
+                        <div class="mockup-container">
+                            <img src="case-study-mockup.webp" alt="Project Mockup" class="mockup-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 800 600\'%3E%3Crect width=\'800\' height=\'600\' fill=\'%23e2e8f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%2364748b\'%3ECase Study Image Placeholder%3C/text%3E%3C/svg%3E'">
+                        </div>
+                    </div>
+                    <div class="split-right">
+                        <h2 class="project-title">Aura Finance</h2>
+                        <p class="project-desc">A complete brand evolution and Web3 platform redesign focusing on trust and high conversion.</p>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <h4>+200%</h4>
+                                <span>User Growth</span>
+                            </div>
+                            <div class="metric">
+                                <h4>3x</h4>
+                                <span>Conversion Rate</span>
+                            </div>
+                        </div>
+                        <div class="carousel-nav">
+                            <button class="nav-btn prev">←</button>
+                            <span>Next Project</span>
+                            <button class="nav-btn next">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: STATS (100vh) -->
+        <section class="section-stats snap-section" id="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-number" data-target="200">0+</h2>
+                        <p class="stat-label">Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-number" data-target="95">0%</h2>
+                        <p class="stat-label">Client Retention</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-number" data-target="10">0M+</h2>
+                        <p class="stat-label">Revenue Generated</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TESTIMONIAL (100vh) -->
+        <section class="section-testimonial snap-section" id="testimonials">
+            <div class="container center-content">
+                <div class="testimonial-card glass-panel">
+                    <div class="client-avatar">
+                        <img src="client.webp" alt="Client" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23cbd5e1\'/%3E%3C/svg%3E'">
+                    </div>
+                    <blockquote class="quote">
+                        "They completely transformed our digital presence. The new website feels like a cinematic experience and conversions have tripled in just two months."
+                    </blockquote>
+                    <div class="client-info">
+                        <strong>Sarah Jenkins</strong>
+                        <span>CMO, TechNova</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FINAL CTA (100vh) -->
+        <section class="section-cta snap-section" id="contact">
+            <div class="cta-background-glow"></div>
+            <div class="container center-content relative-z">
+                <h2 class="cta-headline">Ready to build something extraordinary?</h2>
+                <p class="cta-support">Let's craft your next digital breakthrough together.</p>
+                <button class="btn btn-primary btn-large glow-hover">Start the Conversation</button>
+            </div>
+        </section>
+
+        <!-- SECTION 8: FOOTER -->
+        <footer class="section-footer snap-section">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="logo"><img src="logo/image.png" alt="Logo" class="logo-img"> AGENCY<span>.</span></div>
+                    </div>
+                    <nav class="footer-nav">
+                        <a href="#services">Services</a>
+                        <a href="#work">Work</a>
+                        <a href="#process">Process</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                    <div class="social-icons">
+                        <a href="#">TW</a>
+                        <a href="#">IN</a>
+                        <a href="#">IG</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Agency. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>
