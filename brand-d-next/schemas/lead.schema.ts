@@ -5,10 +5,10 @@ export const leadSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid work email." }),
   goal: z.enum(["leads", "sales", "traffic"], {
-    required_error: "Please select a primary goal.",
+    message: "Please select a primary goal.",
   }),
   budget: z.enum(["under_5k", "5k_10k", "10k_plus"], {
-    required_error: "Please select a budget range.",
+    message: "Please select a budget range.",
   }).optional(),
   honeypot: z.string().max(0).optional(), // Must be empty to pass
 });

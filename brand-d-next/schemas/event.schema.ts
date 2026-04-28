@@ -12,7 +12,7 @@ export const eventSchema = z.object({
     "form_abandon",
   ]),
   elementId: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
   path: z.string(),
 });
 

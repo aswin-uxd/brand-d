@@ -64,7 +64,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, leadId: lead.id });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+      return NextResponse.json({ success: false, errors: error.issues }, { status: 400 });
     }
     console.error('Lead capture error:', error);
     return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });

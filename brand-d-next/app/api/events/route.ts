@@ -44,7 +44,7 @@ export async function POST(req: Request) {
   } catch (error) {
     if (error instanceof z.ZodError) {
       // Return 400 immediately for bad payloads without logging heavy errors
-      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+      return NextResponse.json({ success: false, errors: error.issues }, { status: 400 });
     }
     console.error('Event Tracking Error:', error);
     return NextResponse.json({ success: false }, { status: 500 });

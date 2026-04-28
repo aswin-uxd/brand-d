@@ -1,36 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --shadow-glossy: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --breakpoint-content: 720px;
   --breakpoint-desktop: 1280px;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
-  --border: #e5e5e5;
-  --accent: #111111;
+  --foreground: #0a0a0a;
+  --border: #e8e8e8;
+  --muted: #6b6b6b;
+  --accent: #0a0a0a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ffffff;
-    --border: #333333;
-    --accent: #eeeeee;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter), sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Premium scroll bar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Fade-in animation for hero text */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @utility text-balance {
   text-wrap: balance;
+}
+
+/* Staggered fade-in delays */
+@utility delay-100 { animation-delay: 100ms; }
+@utility delay-200 { animation-delay: 200ms; }
+@utility delay-300 { animation-delay: 300ms; }
+@utility delay-400 { animation-delay: 400ms; }
+
+/* Invisible until animation fires */
+@utility opacity-start {
+  opacity: 0;
 }
